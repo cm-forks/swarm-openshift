@@ -1,0 +1,9 @@
+{
+  "realm": "master",
+  "realm-public-key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApCmaNJm39PtEvLRP7/76hhgUfjVP8v9HAWr/cv6/hKJgTaQrqZWWePnuRFgqbyka/hDFHS+ewoj7ADp6dtCGHDtN2EGhRgn/woKC+btR28Zv/3ryLcKo50xh3QI6lbZeOecuYI0sTxG/8PIoM6xCPa9oIDmX+ZfFD//+z3kt1uCMfqz94vie1Xdb2UwhMGiXus9aMqgPlp+NMxJPqEIjzMBiSJdY+zSrslBxbuNzb8eXB/t7F5xsImvqskvfLOxDTEYZ04KwNqo8G0QusuVlxghHwadkvuPBvSI1lq/DmpSePK7lSKu5VygS8Om3/QKb/E3yuZ/EG+B0YW9mx3r0CwIDAQAB",
+  "auth-server-url": "http://localhost:8080/auth",
+  "ssl-required": "external",
+  "resource": "securehello",
+  "public-client": true,
+  "use-resource-role-mappings": true
+}
