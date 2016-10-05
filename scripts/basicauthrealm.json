@@ -13,19 +13,16 @@
   "requiredCredentials": [ "password" ],
   "users" : [
     {
-      "username" : "admin",
+      "username" : "user",
       "enabled": true,
-      "email" : "admin@admin.com",
-      "firstName": "Admin",
-      "lastName": "Burke",
+      "email" : "user@demo.io",
+      "firstName": "User",
+      "lastName": "Charles",
       "credentials" : [
         { "type" : "password",
           "value" : "password" }
       ],
-      "realmRoles": [ "user","admin" ],
-      "clientRoles": {
-        "realm-management": [ "realm-admin" ]
-      }
+      "realmRoles": [ "user" ]
     }
   ],
   "roles" : {
@@ -33,10 +30,6 @@
       {
         "name": "user",
         "description": "User privileges"
-      },
-      {
-        "name": "admin",
-        "description": "Administrator privileges"
       }
     ]
   },

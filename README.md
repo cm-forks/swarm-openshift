@@ -4,16 +4,17 @@
 
 ```
 curl -O https://downloads.jboss.org/keycloak/2.2.1.Final/keycloak-2.2.1.Final.tar.gz
+rm -rf keycloak-2.2.1.Final
 tar -vxf keycloak-2.2.1.Final.tar.gz
 ```    
 
 * Start server, import the basicauth realm  & launch it
 ``` 
 cd keycloak-2.2.1.Final/bin
+./add-user-keycloak.sh -u admin -p admin -r master
 ./standalone.sh -Djboss.http.port=8181 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/Users/chmoulli/Google-Drive/REDHAT/RH-GP/Presentations/rest-security/scripts/basicauthrealm.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
-ctrl-c
-./standalone.sh -Djboss.http.port=8181
 ```    
+
 # Open Keycloak console
 
     open http://localhost:8181/auth
@@ -24,9 +25,11 @@ ctrl-c
     
 # Call the HTTP Endpoint
     
+* Pass as parameter the user & password to be used
+    
     Tool used is httpie (http//httpie.org)
     
-    http -a admin:password http://localhost:8080/service/echo?value=hello
+    http -a user:password http://localhost:8080/service/echo?value=hello
     
     HTTP/1.1 200 OK
     Cache-Control: no-cache, no-store, must-revalidate
