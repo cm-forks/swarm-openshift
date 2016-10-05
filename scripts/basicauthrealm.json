@@ -46,8 +46,7 @@
       "standardFlowEnabled": false,
       "directAccessGrantsEnabled": true,
       "enabled": true,
-      "adminUrl": "/basicauth",
-      "baseUrl": "/basicauth",
+      "baseUrl": "/*",
       "secret": "password"
     }
   ]
