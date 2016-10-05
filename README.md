@@ -1,19 +1,31 @@
 # Keycloak
 
-* Downlaod and install keycloak
-* Launch it
+* Download and install keycloak
 
+    curl -O https://downloads.jboss.org/keycloak/2.2.1.Final/keycloak-2.2.1.Final.tar.gz
+    tar -vxf keycloak-2.2.1.Final.tar.gz
+    
+* Create an admin user, import the basicauth realm  & launch it
+
+    cd keycloak-2.2.1.Final/bin
+    ./add-user-keycloak.sh -r master -u admin -p admin --domain
+    ./standalone.sh -Djboss.http.port=8181 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/Users/chmoulli/Google-Drive/REDHAT/RH-GP/Presentations/rest-security/scripts/basicauthrealm.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+
+    ctrl-c
+    
     ./standalone.sh -Djboss.http.port=8181
     
-# Demo Realm
+# Open Keycloak console
 
-* Import the basic-auth demo realm from scripts directory
-
+    open http://localhost:8181/auth
+    
 # Launch WildFly Swarm server
 
-    mvn wildfly-swarm:run
+    mvn clean wildfly-swarm:run
     
 # Call the HTTP Endpoint
+    
+    Tool used is httpie (http//httpie.org)
     
     http -a admin:password http://localhost:8080/service/echo?value=hello
     
