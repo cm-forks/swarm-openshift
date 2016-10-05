@@ -1,18 +1,17 @@
 # Keycloak
 
 * Download and install keycloak
+
 ```
 curl -O https://downloads.jboss.org/keycloak/2.2.1.Final/keycloak-2.2.1.Final.tar.gz
 tar -vxf keycloak-2.2.1.Final.tar.gz
 ```    
-* Create an admin user, import the basicauth realm  & launch it
-```
-cd keycloak-2.2.1.Final/bin
-./add-user-keycloak.sh -r master -u admin -p admin --domain
-./standalone.sh -Djboss.http.port=8181 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/Users/chmoulli/Google-Drive/REDHAT/RH-GP/Presentations/rest-security/scripts/basicauthrealm.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
 
+* Start server, import the basicauth realm  & launch it
+``` 
+cd keycloak-2.2.1.Final/bin
+./standalone.sh -Djboss.http.port=8181 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/Users/chmoulli/Google-Drive/REDHAT/RH-GP/Presentations/rest-security/scripts/basicauthrealm.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
 ctrl-c
-    
 ./standalone.sh -Djboss.http.port=8181
 ```    
 # Open Keycloak console

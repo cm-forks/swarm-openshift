@@ -10,7 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
-@Path("service")
+@Path("/service")
 public class BasicAuthService {
 
     private static List<String> users;
@@ -23,6 +23,6 @@ public class BasicAuthService {
     @GET
     @Path("echo")
     public String echo(@QueryParam("value") String value) {
-        return value + " " + users.get((new Random()).nextInt(users.size()));
+        return Character.toUpperCase(value.charAt(0)) + value.substring(1) + " " + users.get((new Random()).nextInt(users.size()));
     }
 }
