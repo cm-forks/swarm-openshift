@@ -2,15 +2,16 @@ package io.swagger.demo;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.GET;
-import javax.ws.rs.Produces;
 
 import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 
@@ -27,14 +28,13 @@ public class HelloWorldEndpoint {
 
 	@Inject
 	@ConfigurationValue("endpoint.hello.message")
-	String message;
+	private Optional<String> message;
 
 	@GET
 	@Produces("text/plain")
 	@Path("hello")
 	public Response doGet() {
-		if (null == message) message = "Config property endpoint.hello.message hasn't been initialized";
-		return Response.ok(message).build();
+		return Response.ok("Response : " + message).build();
 	}
 
 	@GET
