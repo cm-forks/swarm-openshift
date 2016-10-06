@@ -15,30 +15,8 @@
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
-  <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <failOnMissingWebXml>false</failOnMissingWebXml>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-    <version.wildfly.swarm>2016.10.0</version.wildfly.swarm>
-    <fabric8.maven.plugin.version>3.1.64</fabric8.maven.plugin.version>
-  </properties>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>bom-all</artifactId>
-        <version>${version.wildfly.swarm}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <build>
-    <finalName>demo</finalName>
+    <finalName>swarm-rest</finalName>
     <plugins>
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
@@ -103,20 +81,20 @@
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>cdi</artifactId>
     </dependency>
-    <!--
-        <dependency>
+    <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>swagger-webapp</artifactId>
     </dependency>
-        <dependency>
-          <groupId>org.wildfly.swarm</groupId>
-          <artifactId>swagger</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>swagger</artifactId>
+    </dependency>
+    <!--
         <dependency>
           <groupId>org.wildfly.swarm</groupId>
           <artifactId>keycloak</artifactId>
         </dependency>
-        -->
+    -->
 
     <!-- Testing -->
     <dependency>

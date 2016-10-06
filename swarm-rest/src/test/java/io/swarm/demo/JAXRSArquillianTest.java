@@ -32,7 +32,6 @@ public class JAXRSArquillianTest extends SimpleHttp {
         deployment.add(new FileAsset(new File("src/test/resources/project.yml")),"project-stages.yml");
         deployment.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
         deployment.addClass(HelloWorldEndpoint.class);
-        deployment.addAllDependencies();
         return deployment;
     }
 
