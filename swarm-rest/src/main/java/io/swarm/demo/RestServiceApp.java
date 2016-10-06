@@ -1,4 +1,4 @@
-package io.swagger.demo;
+package io.swarm.demo;
 
 import java.net.URL;
 import java.nio.file.Files;

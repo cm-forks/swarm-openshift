@@ -1,4 +1,4 @@
-package io.swagger.demo;
+package io.swarm.demo;
 
 import java.util.Arrays;
 import java.util.List;

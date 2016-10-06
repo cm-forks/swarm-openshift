@@ -45,7 +45,7 @@
         <artifactId>wildfly-swarm-plugin</artifactId>
         <version>${version.wildfly.swarm}</version>
         <configuration>
-          <mainClass>io.swagger.demo.RestServiceApp</mainClass>
+          <mainClass>io.swarm.demo.RestServiceApp</mainClass>
           <bundleDependencies>true</bundleDependencies>
           <environment>
             <PROJECT_PATH>${project.build.directory}/classes/project.yml</PROJECT_PATH>
@@ -117,5 +117,30 @@
           <artifactId>keycloak</artifactId>
         </dependency>
         -->
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>arquillian</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-core</artifactId>
+      <version>1.1.10.Final</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <version>1.1.10.Final</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.2</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 </project>
