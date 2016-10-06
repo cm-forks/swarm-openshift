@@ -33,7 +33,7 @@ public class HelloWorldEndpoint {
 	@Produces("text/plain")
 	@Path("hello")
 	public Response doGet() {
-		System.out.println("Message : " + message);
+		if (null == message) message = "Config property endpoint.hello.message hasn't been initialized";
 		return Response.ok(message).build();
 	}
 

@@ -28,7 +28,7 @@ public class RestServiceApp {
         System.out.println("Config URL : " + cfg.getFile());
         System.out.println("Content : " + Files.readAllLines(Paths.get(cfg_path)));
 
-        Swarm swarm = new Swarm().withStageConfig(cfg);
+        Swarm swarm = new Swarm(false).withStageConfig(cfg);
         Set<String> keys = swarm.stageConfig().keys();
         for(String key : keys) {
             System.out.println("Key : " + key);

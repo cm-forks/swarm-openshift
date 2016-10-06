@@ -46,6 +46,7 @@
         <version>${version.wildfly.swarm}</version>
         <configuration>
           <mainClass>io.swagger.demo.RestServiceApp</mainClass>
+          <bundleDependencies>true</bundleDependencies>
           <environment>
             <PROJECT_PATH>${project.build.directory}/classes/project.yml</PROJECT_PATH>
           </environment>
