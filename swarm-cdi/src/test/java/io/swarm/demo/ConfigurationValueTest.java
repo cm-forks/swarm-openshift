@@ -15,6 +15,9 @@ import org.jboss.shrinkwrap.api.asset.FileAsset;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.wildfly.swarm.Swarm;
+import org.wildfly.swarm.arquillian.CreateSwarm;
+import org.wildfly.swarm.cdi.CDIFraction;
 import org.wildfly.swarm.spi.api.JARArchive;
 import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 
@@ -23,7 +26,7 @@ import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 public class ConfigurationValueTest {
 
     @Inject
-    @ConfigurationValue("some.endpoint.hello.message")
+    @ConfigurationValue("hello.message")
     private Optional<String> message;
 
     @Deployment
@@ -33,10 +36,15 @@ public class ConfigurationValueTest {
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
+    @CreateSwarm
+    public static Swarm newContainer() throws Exception {
+        return new Swarm().fraction(new CDIFraction());
+    }
+
     @Test
     public void testServerAddressExists() {
         Assert.assertNotNull(message);
-        Assert.assertEquals("DEBUG",message);
+        Assert.assertEquals("Hello from WildFly Swarm running on OpenShift!",message);
     }
 
 }
