@@ -19,11 +19,14 @@ public class RestServiceApp {
 
         // Logger logger = Logger.getLogger(RestServiceApp.class);
 
-        URL cfg = Paths.get("/app/config/project.yml").toUri().toURL();
+        String cfg_path = System.getenv("PROJECT_PATH");
+        assert cfg_path != null : "Failled to load env var of the PROJECT_PATH";
+
+        URL cfg = Paths.get(cfg_path).toUri().toURL();
         assert cfg != null : "Failed to load stage configuration";
 
         System.out.println("Config URL : " + cfg.getFile());
-        System.out.println("Content : " + Files.readAllLines(Paths.get("/app/config/project.yml")));
+        System.out.println("Content : " + Files.readAllLines(Paths.get(cfg_path)));
 
         Swarm swarm = new Swarm().withStageConfig(cfg);
         Set<String> keys = swarm.stageConfig().keys();

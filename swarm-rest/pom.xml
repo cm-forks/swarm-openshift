@@ -46,7 +46,9 @@
         <version>${version.wildfly.swarm}</version>
         <configuration>
           <mainClass>io.swagger.demo.RestServiceApp</mainClass>
-<!--          <bundleDependencies>true</bundleDependencies>-->
+          <environment>
+            <PROJECT_PATH>${project.build.directory}/classes/project.yml</PROJECT_PATH>
+          </environment>
         </configuration>
         <executions>
           <execution>
@@ -60,6 +62,19 @@
         <groupId>io.fabric8</groupId>
         <artifactId>fabric8-maven-plugin</artifactId>
         <version>${fabric8.maven.plugin.version}</version>
+        <configuration>
+          <images>
+            <image>
+              <name>${project.artifactId}:${project.version}</name>
+              <alias>swarm-rest</alias>
+              <build>
+                <env>
+                  <PROJECT_PATH>/app/config/project.yml</PROJECT_PATH>
+                </env>
+              </build>
+            </image>
+          </images>
+        </configuration>
         <executions>
           <execution>
             <id>fmp</id>
