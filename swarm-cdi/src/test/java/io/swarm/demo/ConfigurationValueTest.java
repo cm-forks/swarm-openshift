@@ -31,7 +31,7 @@ public class ConfigurationValueTest {
 
     @Deployment
     public static Archive<?> createDeployment() throws Exception {
-        return ShrinkWrap.create(JARArchive.class, "arqDeployment.jar")
+        return ShrinkWrap.create(JARArchive.class)
                 .add(new FileAsset(new File("src/test/resources/project-stages.yml")), "project-stages.yml")
                 .add(EmptyAsset.INSTANCE, "META-INF/beans.xml");
     }
