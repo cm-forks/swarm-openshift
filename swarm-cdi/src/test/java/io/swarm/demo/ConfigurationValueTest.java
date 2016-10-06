@@ -25,6 +25,7 @@ import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 @RunWith(Arquillian.class)
 public class ConfigurationValueTest {
 
+/*
     @Inject
     @ConfigurationValue("hello.message")
     private Optional<String> message;
@@ -45,6 +46,31 @@ public class ConfigurationValueTest {
     public void testServerAddressExists() {
         Assert.assertNotNull(message);
         Assert.assertEquals("Hello from WildFly Swarm running on OpenShift!",message);
+    }
+*/
+
+    @Inject
+    @ConfigurationValue("hello.message")
+    private Optional<String> message;
+
+    @Inject
+    @ConfigurationValue("logger.level")
+    private Optional<String> loggerLevel;
+
+    @Deployment
+    public static Archive<?> createDeployment() throws Exception {
+        return ShrinkWrap.create(JARArchive.class, "arqDeployment.jar")
+                .add(new ClassLoaderAsset("project-stages.yml", ConfigurationValueTest.class.getClassLoader()), "project-stages.yml")
+                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+    }
+
+    @Test
+    public void testHelloMessageProperty() {
+        Assert.assertNotNull(loggerLevel);
+        Assert.assertEquals("DEBUG",loggerLevel.get());
+
+        Assert.assertNotNull(message);
+        Assert.assertEquals("Hello from WildFly Swarm running on OpenShift!",message.get());
     }
 
 }
