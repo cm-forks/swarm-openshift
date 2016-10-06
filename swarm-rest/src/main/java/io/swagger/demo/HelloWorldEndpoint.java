@@ -28,7 +28,7 @@ public class HelloWorldEndpoint {
 
 	@Inject
 	@ConfigurationValue("endpoint.hello.message")
-	private Optional<String> message;
+	String message;
 
 	@GET
 	@Produces("text/plain")
