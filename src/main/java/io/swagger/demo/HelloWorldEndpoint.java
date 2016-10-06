@@ -42,6 +42,7 @@ public class HelloWorldEndpoint {
 			@ApiResponse(code = 500, message = "Internal server error") }
 	)
 	public Response doGet() {
+		System.out.println("Message : " + message);
 		return Response.ok(message).build();
 	}
 

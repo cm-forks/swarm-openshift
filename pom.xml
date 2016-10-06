@@ -39,7 +39,7 @@
         <version>${version.wildfly.swarm}</version>
         <configuration>
           <mainClass>io.swagger.demo.RestServiceApp</mainClass>
-          <bundleDependencies>true</bundleDependencies>
+<!--          <bundleDependencies>true</bundleDependencies>-->
         </configuration>
         <executions>
           <execution>
