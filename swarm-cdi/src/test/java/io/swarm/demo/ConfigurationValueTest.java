@@ -27,7 +27,7 @@ public class ConfigurationValueTest {
     @Deployment
     public static Archive<?> createDeployment() throws Exception {
         return ShrinkWrap.create(JARArchive.class, "arq-test.jar")
-                .add(new ClassLoaderAsset("project-stages.yml", ConfigurationValueTest.class.getClassLoader()), "project-stages.yml")
+                .add(new ClassLoaderAsset("project.yml", ConfigurationValueTest.class.getClassLoader()), "project-stages.yml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
