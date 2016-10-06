@@ -86,10 +86,10 @@
       <scope>provided</scope>
     </dependency>
     <!-- WildFly Swarm Fractions -->
-    <dependency>
+<!--    <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs</artifactId>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs-cdi</artifactId>
