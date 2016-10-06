@@ -1,4 +1,4 @@
-    # Launch WildFly Swarm server
+ # Launch WildFly Swarm server
 
     cd swarm-rest
     mvn clean wildfly-swarm:run
