@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -18,6 +19,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 
+@ApplicationScoped
 @Path("/say")
 @Api(value = "say", description = "Endpoint for Say operations")
 public class HelloWorldEndpoint {
