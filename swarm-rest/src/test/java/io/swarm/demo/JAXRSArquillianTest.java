@@ -12,6 +12,7 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.asset.FileAsset;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +28,7 @@ public class JAXRSArquillianTest extends SimpleHttp {
     @Deployment(testable = false)
     public static Archive createDeployment() throws Exception {
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "myapp.war");
-        deployment.add(new ClassLoaderAsset("project.yml", JAXRSArquillianTest.class.getClassLoader()), "project-stages.yml");
+        deployment.add(new FileAsset(new File("src/test/resources/project.yml")),"project.yml");
         deployment.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
         deployment.addClass(HelloWorldEndpoint.class);
         deployment.addAllDependencies();
@@ -36,7 +37,10 @@ public class JAXRSArquillianTest extends SimpleHttp {
 
     @CreateSwarm
     public static Swarm newContainer() throws Exception {
+        URL cfg = JAXRSArquillianTest.class.getClassLoader().getResource("project.yml");
+        System.out.println("URL : " + cfg.getFile());
         return new Swarm()
+                .withStageConfig(cfg)
                 .fraction(new JAXRSFraction())
                 .fraction(new CDIFraction());
     }
