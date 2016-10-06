@@ -2,13 +2,6 @@ spec:
   replicas: 1
   template:
     spec:
-      volumes:
-        - name: config
-          configMap:
-            name: ${project.artifactId}
-            items:
-            - key: "application.properties"
-              path: "application.properties"
       containers:
         - resources:
             requests:
@@ -20,3 +13,10 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /app/config
+      volumes:
+      - configMap:
+          name: ${project.artifactId}
+          items:
+          - key: "application.properties"
+            path: "application.properties"
+        name: config
