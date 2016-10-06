@@ -91,6 +91,7 @@ Caused by: org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfi
     */
 
     @Test
+    @RunAsClient
     public void testResource() {
         // Call the /say/hello service and checks that we get the correct response
         Response response = getUrlContents("http://localhost:8080/say/hello");
