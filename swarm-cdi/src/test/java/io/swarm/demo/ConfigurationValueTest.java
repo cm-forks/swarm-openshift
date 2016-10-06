@@ -32,14 +32,17 @@ public class ConfigurationValueTest {
 
     @Deployment
     public static Archive<?> createDeployment() throws Exception {
-        return ShrinkWrap.create(JARArchive.class)
+        return ShrinkWrap.create(JARArchive.class, "arq-test.jar")
                 .add(new FileAsset(new File("src/test/resources/project-stages.yml")), "project-stages.yml")
-                .add(EmptyAsset.INSTANCE, "META-INF/beans.xml");
+                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @CreateSwarm
     public static Swarm newContainer() throws Exception {
-        return new Swarm().fraction(new CDIFraction());
+        return new Swarm()
+                .withStageConfig(ConfigurationValueTest.class.getClassLoader()
+                                         .getResource("project-stages.yml"))
+                .fraction(new CDIFraction());
     }
 
     @Test
@@ -50,25 +53,18 @@ public class ConfigurationValueTest {
 */
 
     @Inject
-    @ConfigurationValue("hello.message")
+    @ConfigurationValue("service.hello.message")
     private Optional<String> message;
-
-    @Inject
-    @ConfigurationValue("logger.level")
-    private Optional<String> loggerLevel;
 
     @Deployment
     public static Archive<?> createDeployment() throws Exception {
-        return ShrinkWrap.create(JARArchive.class, "arqDeployment.jar")
+        return ShrinkWrap.create(JARArchive.class, "arq-test.jar")
                 .add(new ClassLoaderAsset("project-stages.yml", ConfigurationValueTest.class.getClassLoader()), "project-stages.yml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @Test
     public void testHelloMessageProperty() {
-        Assert.assertNotNull(loggerLevel);
-        Assert.assertEquals("DEBUG",loggerLevel.get());
-
         Assert.assertNotNull(message);
         Assert.assertEquals("Hello from WildFly Swarm running on OpenShift!",message.get());
     }
