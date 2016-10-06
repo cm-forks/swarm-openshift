@@ -33,16 +33,13 @@ public class ConfigurationValueTest {
     @Deployment
     public static Archive<?> createDeployment() throws Exception {
         return ShrinkWrap.create(JARArchive.class, "arq-test.jar")
-                .add(new FileAsset(new File("src/test/resources/project-stages.yml")), "project-stages.yml")
+                .add(new ClassLoaderAsset("project-stages.yml", ConfigurationValueTest.class.getClassLoader()), "project-stages.yml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @CreateSwarm
     public static Swarm newContainer() throws Exception {
-        return new Swarm()
-                .withStageConfig(ConfigurationValueTest.class.getClassLoader()
-                                         .getResource("project-stages.yml"))
-                .fraction(new CDIFraction());
+        return new Swarm().fraction(new CDIFraction());
     }
 
     @Test
@@ -62,6 +59,18 @@ public class ConfigurationValueTest {
                 .add(new ClassLoaderAsset("project-stages.yml", ConfigurationValueTest.class.getClassLoader()), "project-stages.yml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
+
+    /*  GENERATE THE CDI ERROR IF WE ADD @CreateSwarm
+    2016-10-06 18:55:05,736 ERROR [stderr] (main) Caused by: org.wildfly.swarm.container.DeploymentException: WFSWARM0007: Deployment failed: {"WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"arq-test.jar\".WeldStartService" => "org.jboss.msc.service.StartException in service jboss.deployment.unit.\"arq-test.jar\".WeldStartService: Failed to start service
+    2016-10-06 18:55:05,736 ERROR [stderr] (main)     Caused by: org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependencies for type Optional<String> with qualifiers @ConfigurationValue
+    2016-10-06 18:55:05,736 ERROR [stderr] (main)   at injection point [BackedAnnotatedField] @Inject @ConfigurationValue private io.swarm.demo.ConfigurationValueTest.message
+    2016-10-06 18:55:05,737 ERROR [stderr] (main)   at io.swarm.demo.ConfigurationValueTest.message(ConfigurationValueTest.java:0)
+    2016-10-06 18:55:05,737 ERROR [stderr] (main) "},"WFLYCTL0412: Required services that are not installed:" => ["jboss.deployment.unit.\"arq-test.jar\".WeldStartService"],"WFLYCTL0180: Services with missing/unavailable dependencies" => undefined}
+
+    @CreateSwarm
+    public static Swarm newContainer() throws Exception {
+        return new Swarm().fraction(new CDIFraction());
+    }*/
 
     @Test
     public void testHelloMessageProperty() {
