@@ -1,7 +1,7 @@
 # Launch WildFly Swarm server
 
     cd swarm-rest
-    mvn clean wildfly-swarm:run
+    mvn clean package wildfly-swarm:run
     
 # Call the service
     

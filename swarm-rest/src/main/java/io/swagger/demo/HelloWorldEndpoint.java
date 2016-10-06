@@ -12,16 +12,10 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 
 @ApplicationScoped
 @Path("/say")
-@Api(value = "say", description = "Endpoint for Say operations")
 public class HelloWorldEndpoint {
 
 	private static List<String> users;
@@ -38,11 +32,6 @@ public class HelloWorldEndpoint {
 	@GET
 	@Produces("text/plain")
 	@Path("hello")
-	@ApiOperation(value = "Returns hello details", notes = "Returns hello details.", response = String.class)
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successful generated response message", response = String.class),
-			@ApiResponse(code = 500, message = "Internal server error") }
-	)
 	public Response doGet() {
 		System.out.println("Message : " + message);
 		return Response.ok(message).build();
@@ -50,12 +39,7 @@ public class HelloWorldEndpoint {
 
 	@GET
 	@Path("echo")
-	@ApiOperation(value = "Returns echo details", notes = "Returns echo details.", response = String.class)
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successful echoing", response = String.class),
-			@ApiResponse(code = 500, message = "Internal server error") }
-	)
-	public String echo(@ApiParam(value = "value to be passed", required = true) @QueryParam("value") String value) {
+	public String echo(@QueryParam("value") String value) {
 		return Character.toUpperCase(value.charAt(0)) + value.substring(1) + " " + users.get((new Random()).nextInt(users.size()));
 	}
 }
