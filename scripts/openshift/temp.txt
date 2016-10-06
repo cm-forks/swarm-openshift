@@ -9,3 +9,7 @@ oc get pvc
 
 oc delete pvc/keycloak-config
 oc delete pv/keycloak-config
+oc delete pvc/keycloak-data
+oc delete pv/keycloak-data
+oc delete dc/keycloak
+oc delete service/keycloak

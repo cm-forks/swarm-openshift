@@ -68,14 +68,19 @@ cd keycloak-2.2.1.Final/bin
    http $(minishift service swarm-rest --url=true)/say/echo?value=hello
    http $(minishift service swarm-rest --url=true)/say/hello
 ``` 
-
-* Add a hostPath persistent volume    
-```    
-    oc create -f scripts/pv.yaml 
-```        
+       
 * Deploy Keycloak SSO
 ```        
     oc create -f http://repo1.maven.org/maven2/io/fabric8/devops/apps/keycloak/2.2.265/keycloak-2.2.265-openshift.yml
 ```  
+* Hack to mount the volume
+
+This command will create the Persistent volumes which are required for Keycloak as the template will create the Persistent Volume Claim
+
+```
+gofabric8 volumes
+```
+
+Remark: The version 2.2.265 of keycloak doesn't work !!
 
 
