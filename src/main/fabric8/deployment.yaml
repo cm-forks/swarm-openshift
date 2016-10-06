@@ -1,0 +1,22 @@
+spec:
+  replicas: 1
+  template:
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: ${project.artifactId}
+            items:
+            - key: "application.properties"
+              path: "application.properties"
+      containers:
+        - resources:
+            requests:
+              cpu: "0.1"
+              memory: 100Mi
+            limits:
+              cpu: "0.2"
+              memory: 100Mi
+          volumeMounts:
+            - name: config
+              mountPath: /app/config

@@ -1,0 +1,11 @@
+oc delete pvc/keycloak-data
+oc delete pv/keycloak-data
+
+oc create -f scripts/openshift/pvc-keycloak-data.yaml
+oc create -f scripts/openshift/pv-keycloak-data.yaml
+
+oc get pv
+oc get pvc
+
+oc delete pvc/keycloak-config
+oc delete pv/keycloak-config

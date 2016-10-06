@@ -1,0 +1,5 @@
+metadata:
+  name: ${project.artifactId}
+data:
+  application.properties: "# demo application proeprties file\nwelcome = Hello from\
+    \ Kubernetes ConfigMap!!!\ndummy = some value"

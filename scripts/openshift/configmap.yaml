@@ -1,0 +1,10 @@
+metadata:
+  labels:
+    provider: "io.swarm"
+    project: "swarm-rest"
+    version: "1.0.0-SNAPSHOT"
+    group: "io.demo.swarm"
+  name: "swarm-rest"
+data:
+  application.properties: "# demo application proeprties file\nwelcome = Hello from\
+    \ Kubernetes ConfigMap!!!\ndummy = some value"

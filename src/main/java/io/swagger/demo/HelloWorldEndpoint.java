@@ -1,4 +1,4 @@
-package io.demo;
+package io.swagger.demo;
 
 import java.util.Arrays;
 import java.util.List;
