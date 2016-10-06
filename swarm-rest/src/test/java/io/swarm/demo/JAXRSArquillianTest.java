@@ -29,28 +29,27 @@ public class JAXRSArquillianTest extends SimpleHttp {
     @Deployment(testable = false)
     public static Archive createDeployment() throws Exception {
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "myapp.war");
-        deployment.add(new FileAsset(new File("src/test/resources/project.yml")),"project.yml");
+        deployment.add(new FileAsset(new File("src/test/resources/project.yml")),"project-stages.yml");
         deployment.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
         deployment.addClass(HelloWorldEndpoint.class);
         deployment.addAllDependencies();
         return deployment;
     }
 
-    @CreateSwarm
+/*  @CreateSwarm
     public static Swarm newContainer() throws Exception {
-        URL cfg = JAXRSArquillianTest.class.getClassLoader().getResource("project.yml");
+        URL cfg = JAXRSArquillianTest.class.getClassLoader().getResource("project-stages.yml");
         System.out.println("URL : " + cfg.getFile());
         return new Swarm()
                 .withStageConfig(cfg)
                 .fraction(new JAXRSFraction())
-                .fraction(new CDIFraction())
                 .fraction(LoggingFraction.createDebugLoggingFraction());
-    }
+    }*/
 
     @Test
     @RunAsClient
     public void testResource() {
-        // verify indirect access to secure resources
+        // Call the /say/hello service and checks that we get the correct response
         Response response = getUrlContents("http://localhost:8080/say/hello");
         Assert.assertTrue(response.getBody().contains("Hello from WildFly Swarm running on OpenShift!"));
     }
