@@ -1,9 +1,9 @@
- # Launch WildFly Swarm server
+# Launch WildFly Swarm server
 
     cd swarm-rest
     mvn clean wildfly-swarm:run
     
- # Call the service
+# Call the service
     
     Tool used is httpie (http//httpie.org)
     
