@@ -1,5 +1,10 @@
 package io.swarm.demo;
 
+import java.io.File;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -22,10 +27,9 @@ public class JAXRSArquillianTest extends SimpleHttp {
     @Deployment(testable = false)
     public static Archive createDeployment() throws Exception {
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "myapp.war");
-        deployment.add(new ClassLoaderAsset("project.yml", JAXRSArquillianTest.class.getClassLoader()), "project.yml");
+        deployment.add(new ClassLoaderAsset("project.yml", JAXRSArquillianTest.class.getClassLoader()), "project-stages.yml");
         deployment.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
         deployment.addClass(HelloWorldEndpoint.class);
-        deployment.setContextRoot("rest");
         deployment.addAllDependencies();
         return deployment;
     }
