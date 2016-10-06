@@ -33,7 +33,7 @@ public class ConfigurationValueTest {
     public static Archive<?> createDeployment() throws Exception {
         return ShrinkWrap.create(JARArchive.class, "arqDeployment.jar")
                 .add(new FileAsset(new File("src/test/resources/project-stages.yml")), "project-stages.yml")
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+                .add(EmptyAsset.INSTANCE, "META-INF/beans.xml");
     }
 
     @CreateSwarm
