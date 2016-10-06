@@ -78,13 +78,14 @@
   </build>
 
   <dependencies>
-    <!-- Java EE 7 dependency -->
+    <!-- Java EE 7 dependency
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
       <version>7.0</version>
       <scope>provided</scope>
     </dependency>
+    -->
     <!-- WildFly Swarm Fractions -->
 <!--    <dependency>
       <groupId>org.wildfly.swarm</groupId>
@@ -96,16 +97,12 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>cdi</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
       <artifactId>logging</artifactId>
     </dependency>
 <!--    <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>keycloak</artifactId>
-    </dependency>-->
+    </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>swagger-webapp</artifactId>
@@ -114,5 +111,6 @@
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>swagger</artifactId>
     </dependency>
+    -->
   </dependencies>
 </project>
