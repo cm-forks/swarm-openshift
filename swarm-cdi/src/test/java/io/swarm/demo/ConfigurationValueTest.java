@@ -20,10 +20,10 @@ import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 
 
 @RunWith(Arquillian.class)
-public class ConfigurationValueProducerTest {
+public class ConfigurationValueTest {
 
     @Inject
-    @ConfigurationValue("endpoint.hello.message")
+    @ConfigurationValue("some.endpoint.hello.message")
     private Optional<String> message;
 
     @Deployment
