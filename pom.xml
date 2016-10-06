@@ -10,5 +10,6 @@
 
   <modules>
     <module>swarm-rest</module>
+    <module>swarm-cdi</module>
   </modules>
 </project>

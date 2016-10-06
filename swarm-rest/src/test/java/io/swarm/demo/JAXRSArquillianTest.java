@@ -21,6 +21,7 @@ import org.wildfly.swarm.arquillian.CreateSwarm;
 import org.wildfly.swarm.cdi.CDIFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jaxrs.JAXRSFraction;
+import org.wildfly.swarm.logging.LoggingFraction;
 
 @RunWith(Arquillian.class)
 public class JAXRSArquillianTest extends SimpleHttp {
@@ -42,7 +43,8 @@ public class JAXRSArquillianTest extends SimpleHttp {
         return new Swarm()
                 .withStageConfig(cfg)
                 .fraction(new JAXRSFraction())
-                .fraction(new CDIFraction());
+                .fraction(new CDIFraction())
+                .fraction(LoggingFraction.createDebugLoggingFraction());
     }
 
     @Test
