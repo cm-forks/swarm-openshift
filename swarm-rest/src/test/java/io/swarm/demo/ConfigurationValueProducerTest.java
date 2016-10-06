@@ -24,7 +24,6 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.asset.FileAsset;
 import org.junit.Assert;
@@ -33,9 +32,6 @@ import org.junit.runner.RunWith;
 import org.wildfly.swarm.spi.api.JARArchive;
 import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 
-/**
- * @author George Gastaldi
- */
 @RunWith(Arquillian.class)
 public class ConfigurationValueProducerTest {
 
@@ -46,14 +42,14 @@ public class ConfigurationValueProducerTest {
     @Deployment
     public static Archive<?> createDeployment() throws Exception {
         return ShrinkWrap.create(JARArchive.class, "arqDeployment.jar")
-                .add(new FileAsset(new File("src/test/resources/project.yml")), "project.yml")
+                .add(new FileAsset(new File("src/test/resources/project.yml")), "project-stages.yml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @Test
     public void testServerAddressExists() {
         Assert.assertNotNull(message);
-        Assert.assertEquals("DEBUG",message);
+        Assert.assertEquals("Hello from WildFly Swarm running on OpenShift!",message.get());
     }
 
 }
