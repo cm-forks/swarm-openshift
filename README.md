@@ -29,7 +29,7 @@ cd keycloak-2.2.1.Final/bin
     
     Tool used is httpie (http//httpie.org)
     
-    http -a user:password http://localhost:8080/service/echo?value=hello
+    http -a user:password http://localhost:8080/say/echo?value=hello
     
     HTTP/1.1 200 OK
     Cache-Control: no-cache, no-store, must-revalidate
@@ -41,5 +41,7 @@ cd keycloak-2.2.1.Final/bin
     Pragma: no-cache
     
     Hello Sébastien
+    
+    http -a user:password http://localhost:8080/say/hello
 
 
