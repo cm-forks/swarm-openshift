@@ -59,13 +59,9 @@ cd keycloak-2.2.1.Final/bin
 ```    
     oc login -u admin -p admin
 ```        
-* Build Project
+* Build Project & run
 ```
-    mvn clean package fabric8:build -Dfabric8.mode=kubernetes
-```
-* Run
-```
-   mvn fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
+   mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
 ```   
 * Call the Rest endpoints
 ```   
