@@ -58,7 +58,21 @@ cd keycloak-2.2.1.Final/bin
 * Log on to openshift
 ```    
     oc login -u admin -p admin
-```    
+```        
+* Build Project
+```
+    mvn clean package fabric8:build -Dfabric8.mode=kubernetes
+```
+* Run
+```
+   mvn fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
+```   
+* Call the Rest endpoints
+```   
+   http $(minishift service swarm-rest --url=true)/say/echo?value=hello
+   http $(minishift service swarm-rest --url=true)/say/hello
+``` 
+
 * Add a hostPath persistent volume    
 ```    
     oc create -f scripts/pv.yaml 
@@ -66,19 +80,6 @@ cd keycloak-2.2.1.Final/bin
 * Deploy Keycloak SSO
 ```        
     oc create -f http://repo1.maven.org/maven2/io/fabric8/devops/apps/keycloak/2.2.265/keycloak-2.2.265-openshift.yml
-```      
-* Build Project
-```
-    mvn clean package fabric8:build -Dfabric8.mode=kubernetes
-```
-* Run
-```
-   mvn fabric8:run -Dfabric8.mode=kubernetes
-```   
-* Call the Rest endpoints
-```   
-   http $(minishift service swarm-rest --url=true)/say/echo?value=hello
-   http $(minishift service swarm-rest --url=true)/say/hello
-``` 
+```  
 
 
