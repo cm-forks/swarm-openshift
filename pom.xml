@@ -52,7 +52,7 @@
         <groupId>io.fabric8</groupId>
         <artifactId>fabric8-maven-plugin</artifactId>
         <version>${fabric8.maven.plugin.version}</version>
-        <configuration>
+<!--        <configuration>
           <images>
             <image>
               <name>swarm-rest:1.0.0</name>
@@ -62,7 +62,7 @@
               </build>
             </image>
           </images>
-        </configuration>
+        </configuration>-->
         <executions>
           <execution>
             <id>fmp</id>

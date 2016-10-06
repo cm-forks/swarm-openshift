@@ -7,8 +7,8 @@ spec:
           configMap:
             name: "rest-security"
             items:
-            - key: "application.properties"
-              path: "application.properties"
+            - key: "project.yaml"
+              path: "project.yaml"
       containers:
         - resources:
             requests:

@@ -1,5 +1,15 @@
 metadata:
   name: ${project.artifactId}
 data:
-  application.properties: "# demo application properties file\nwelcome = Hello from\
-    \ Kubernetes ConfigMap!!!\ndummy = some value"
+  project.yml: |-
+    some:
+      string:
+        property: Hello World
+      integer:
+        property: 50
+      boolean:
+        property: true
+    endpoint:
+      hello:
+        message: Hello from WildFly Swarm running on OpenShift!
+

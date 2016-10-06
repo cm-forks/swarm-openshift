@@ -6,5 +6,5 @@ metadata:
     group: "io.demo.swarm"
   name: "swarm-rest"
 data:
-  application.properties: "# demo application proeprties file\nwelcome = Hello from\
+  project.yaml: "# demo application proeprties file\nwelcome = Hello from\
     \ Kubernetes ConfigMap!!!\ndummy = some value"

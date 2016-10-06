@@ -13,7 +13,7 @@ import org.wildfly.swarm.logging.LoggingFraction;
 public class RestServiceApp {
     public static void main(String[] args) throws Exception {
 
-        URL cfg = Paths.get("/app/config/application.properties").toUri().toURL();
+        URL cfg = Paths.get("/app/config/project.yml").toUri().toURL();
         assert cfg != null : "Failed to load stage configuration";
 
         Swarm swarm = new Swarm().withStageConfig(cfg);
