@@ -1,9 +1,9 @@
-# WildFly Microservices Demo
+# WildFly Swarm Microservices - OpenShift Demo
 
 This demo contains 2 microservices, a REST client and a REST Service. They can be deployed top of OpenShift
 and the client will benefit of the Kubernetes Load Balancing feature to call one the pod running
 
-# Run demo on Openshift
+# Run demo on OpenShift
     
 * Create a local OpenShift instance on the Developer machine
 ```
