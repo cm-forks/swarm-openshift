@@ -63,7 +63,8 @@ oc create -f http://repo1.maven.org/maven2/io/fabric8/devops/apps/fluentd/2.2.21
 ```
 
 Remarks : 
-- The templates containing Fluentd, ElasticSaerch, Grafana, Kibana, ... are available at this address : https://repo1.maven.org/maven2/io/fabric8/forge/distro/distro/
+- The zip file containing Fluentd, ElasticSearch, Grafana, Kibana, ... templates is available at this address : https://repo1.maven.org/maven2/io/fabric8/forge/distro/distro/
+- Ipaas can be downloaded from here : https://repo1.maven.org/maven2/io/fabric8/ipaas/distro/distro/
 - The version of the distro.zip does not match the different releases of each individual template. Take care !
 
 # Run the project locally
