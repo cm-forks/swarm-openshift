@@ -1,7 +1,6 @@
 package io.swarm.demo;
 
 import java.io.File;
-import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -13,12 +12,7 @@ import org.jboss.shrinkwrap.api.asset.FileAsset;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wildfly.swarm.Swarm;
-import org.wildfly.swarm.arquillian.CreateSwarm;
-import org.wildfly.swarm.cdi.CDIFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
-import org.wildfly.swarm.jaxrs.JAXRSFraction;
-import org.wildfly.swarm.logging.LoggingFraction;
 
 @RunWith(Arquillian.class)
 @RunAsClient
