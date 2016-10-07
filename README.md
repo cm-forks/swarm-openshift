@@ -57,8 +57,14 @@ Remark: The version 2.2.265 of keycloak doesn't work !!
 
 * Deploy the Fabric8 Management Templates
 ```
-gofabric8 deploy --app=management
+gofabric8 deploy --app=logging --version-devops=2.2.223
+gofabric8 deploy --app=management --version-devops=2.2.223
+oc create -f http://repo1.maven.org/maven2/io/fabric8/devops/apps/fluentd/2.2.216/fluentd-2.2.216-kubernetes.yml
 ```
+
+Remarks : 
+- The templates containing Fluentd, ElasticSaerch, Grafana, Kibana, ... are available at this address : https://repo1.maven.org/maven2/io/fabric8/forge/distro/distro/
+- The version of the distro.zip does not match the different releases of each individual template. Take care !
 
 # Run the project locally
 
