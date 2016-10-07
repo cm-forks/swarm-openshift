@@ -1,16 +1,72 @@
-# Launch WildFly Swarm server
+# WildFly Microservices Demo
+
+This demo contains 2 microservices, a REST client and a REST Service. They can be deployed top of OpenShift
+and the client will benefit of the Kubernetes Load Balancing feature to call one the pod running
+
+# Run demo on Openshift
+    
+* Create a local OpenShift instance on the Developer machine
+```
+    ./scripts/create_minishift.sh
+```    
+* Configure Docker env variables 
+
+To access the Docker server from the local machine
+
+```    
+    minishift docker-env
+    eval $(minishift docker-env)
+```    
+* Log on to openshift
+```    
+    oc login -u admin -p admin
+```        
+* Build Project & run
+```
+   mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes -DskipTests=true
+   or
+   mvn fabric8:run -Dfabric8.mode=kubernetes -DskipTests=true
+```   
+* Call the Rest endpoints
+```   
+   http $(minishift service swarm-rest --url=true)/say/echo?value=hello
+   http $(minishift service swarm-rest --url=true)/say/hello
+``` 
+     
+* Useful commands
+```
+ mvn fabric8:undeploy
+```     
+       
+* Deploy Keycloak SSO
+```        
+    oc create -f http://repo1.maven.org/maven2/io/fabric8/devops/apps/keycloak/2.2.265/keycloak-2.2.265-openshift.yml
+```  
+* Hack to mount the volume
+
+This command will create the Persistent volumes which are required for Keycloak as the template will create the Persistent Volume Claim
+
+```
+gofabric8 volumes
+```
+
+Remark: The version 2.2.265 of keycloak doesn't work !!
+
+# Run the project locally
+
+## Launch WildFly Swarm server
 
     cd swarm-rest
     mvn clean package wildfly-swarm:run
     
-# Call the service
+## Call the service
     
     Tool used is httpie (http//httpie.org)
     
     http http://localhost:8080/say/echo?value=hello
     http http://localhost:8080/say/hello
     
-# To secure the endpoint using Keycloak & basic_auth
+## To secure the endpoint using Keycloak & basic_auth
     
 * Download and install keycloak
 
@@ -27,7 +83,7 @@ cd keycloak-2.2.1.Final/bin
 ./standalone.sh -Djboss.http.port=8181 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/Users/chmoulli/Google-Drive/REDHAT/RH-GP/Presentations/rest-security/scripts/basicauthrealm.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
 ```    
 
-# Open Keycloak console
+## Open Keycloak console
 
     open http://localhost:8181/auth
 
@@ -38,7 +94,7 @@ cd keycloak-2.2.1.Final/bin
     mvn clean wildfly-swarm:run
 ```
     
-# Call the HTTP Endpoint
+## Call the HTTP Endpoint
     
 * Pass as parameter the user & password to be used
     
