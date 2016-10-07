@@ -12,8 +12,6 @@ import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jaxrs.JAXRSFraction;
 import org.wildfly.swarm.logging.LoggingFraction;
 
-//import org.jboss.logging.Logger;
-
 public class RestServiceApp {
     public static void main(String[] args) throws Exception {
 
