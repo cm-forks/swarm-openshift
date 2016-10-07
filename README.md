@@ -56,8 +56,7 @@ Remark: The version 2.2.265 of keycloak doesn't work !!
 
 ## Launch WildFly Swarm server
 
-    cd swarm-rest
-    mvn clean package wildfly-swarm:run
+    cd swarm-rest && mvn clean package wildfly-swarm:run
     
 ## Call the service
     
@@ -66,9 +65,19 @@ Remark: The version 2.2.265 of keycloak doesn't work !!
     http http://localhost:8080/say/echo?value=hello
     http http://localhost:8080/say/hello
     
-## To secure the endpoint using Keycloak & basic_auth
+    or the scripts
+    ./scripts/hit-service-echo.sh
+    ./scripts/hit-service-hello.sh
     
-* Download and install keycloak
+## Call the service using the Client
+    
+    cd swarm-client && mvn camel:run
+    
+## Secure the REST endpoint
+ 
+The security is managed by Keycloak SSO & the HTTP Basic Auth mode will be used to access to the endopoint
+    
+* Download and install Keycloak
 
 ```
 curl -O https://downloads.jboss.org/keycloak/2.2.1.Final/keycloak-2.2.1.Final.tar.gz

@@ -1,5 +1,7 @@
 package io.swarm.demo;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -24,39 +26,45 @@ import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 @Api(value = "say", description = "Endpoint for Say operations")
 public class HelloWorldEndpoint {
 
-	private static List<String> users;
+    private static List<String> users;
 
-	static {
-		String engineers = "Charles,Bruno,George,Sébastien,Clément,Heiko,Bob,Lance,Jay";
-		users = Arrays.asList(engineers.split(","));
-	}
+    static {
+        String engineers = "Charles,Bruno,George,Sébastien,Clément,Heiko,Bob,Lance,Jay";
+        users = Arrays.asList(engineers.split(","));
+    }
 
-	@Inject
-	@ConfigurationValue("endpoint.hello.message")
-	String message;
+    @Inject
+    @ConfigurationValue("endpoint.hello.message")
+    String message;
 
-	@GET
-	@Produces("text/plain")
-	@Path("hello")
-	@ApiOperation(value = "Returns hello details", notes = "Returns hello details.", response = String.class)
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successful generated response message", response = String.class),
-			@ApiResponse(code = 500, message = "Internal server error") }
-	)
-	public Response doGet() {
-		System.out.println("Message : " + message);
-		return Response.ok(message + " from : " + System.getenv("HOSTNAME")).build();
-	}
+    @GET
+    @Produces("text/plain")
+    @Path("hello")
+    @ApiOperation(value = "Returns hello details", notes = "Returns hello details.", response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful generated response message", response = String.class),
+            @ApiResponse(code = 500, message = "Internal server error")}
+    )
+    public Response doGet() throws Exception {
+        String HOSTNAME = (System.getenv("HOSTNAME") == null) ? getHostname() : System.getenv("HOSTNAME");
+        return Response.ok(message + " from : " + HOSTNAME).build();
+    }
 
-	@GET
-	@Produces("text/plain")
-	@Path("echo")
-	@ApiOperation(value = "Returns echo details", notes = "Returns echo details.", response = String.class)
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successful echoing", response = String.class),
-			@ApiResponse(code = 500, message = "Internal server error") }
-	)
-	public String echo(@ApiParam(value = "value to be passed", required = true) @QueryParam("value") String value) {
-		return Character.toUpperCase(value.charAt(0)) + value.substring(1) + " " + users.get((new Random()).nextInt(users.size()));
-	}
+    @GET
+    @Produces("text/plain")
+    @Path("echo")
+    @ApiOperation(value = "Returns echo details", notes = "Returns echo details.", response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful echoing", response = String.class),
+            @ApiResponse(code = 500, message = "Internal server error")}
+    )
+    public String echo(@ApiParam(value = "value to be passed", required = true) @QueryParam("value") String value) {
+        return Character.toUpperCase(value.charAt(0)) + value.substring(1) + " " + users.get((new Random()).nextInt(users.size()));
+    }
+
+    public String getHostname() throws UnknownHostException {
+            InetAddress addr = InetAddress.getLocalHost();
+            return addr.getHostName();
+    }
+
 }

@@ -21,7 +21,7 @@
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>${wildfly.swarm.version}</version>
         <configuration>
           <mainClass>io.swarm.demo.RestServiceApp</mainClass>
           <bundleDependencies>true</bundleDependencies>
