@@ -15,7 +15,7 @@
 ```        
 * Build Project & run
 ```
-   mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
+   mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes -DskipTests=true
 ```   
 * Call the Rest endpoints
 ```   
