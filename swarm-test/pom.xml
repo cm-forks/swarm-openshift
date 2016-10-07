@@ -11,7 +11,7 @@
 
   <groupId>io.demo</groupId>
   <artifactId>swarm-cdi</artifactId>
-  <name>WildFly Swarm CDI</name>
+  <name>WildFly Swarm Microservices :: Test</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

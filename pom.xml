@@ -32,7 +32,7 @@
 
   <modules>
     <module>swarm-rest</module>
-    <module>swarm-cdi</module>
     <module>swarm-client</module>
+    <module>swarm-test</module>
   </modules>
 </project>

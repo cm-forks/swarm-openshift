@@ -15,37 +15,3 @@ oc delete dc/keycloak
 oc delete service/keycloak
 
 oc delete dc/swarm-rest
-
-FROM fabric8/java-alpine-openjdk8-jdk:1.2.1
-ENV AB_JOLOKIA_OFF=true AB_OFF=true JAVA_APP_DIR=/deployments
-EXPOSE 8080 8778 9779
-COPY maven /deployments/
-
- <configuration>
-          <images>
-            <image>
-              <name>${project.artifactId}:${project.version}</name>
-              <alias>swarm-rest</alias>
-              <build>
-                <from>fabric8/java-alpine-openjdk8-jdk</from>
-                <assembly>
-                  <basedir>/deployments</basedir>
-                  <descriptorRef>artifact-with-dependencies</descriptorRef>
-                </assembly>
-                <env>
-                  <PROJECT_PATH>/app/config/project.yml</PROJECT_PATH>
-                  <AB_JOLOKIA_OFF>true</AB_JOLOKIA_OFF>
-                  <AB_OFF>true</AB_OFF>
-                  <JAVA_APP_DIR>/deployments</JAVA_APP_DIR>
-                </env>
-                <ports>
-                  <port>8080</port>
-                  <port>8778</port>
-                  <port>9779</port>
-                </ports>
-<!--                <dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
-                <dockerFile>Dockerfile</dockerFile>-->
-              </build>
-            </image>
-          </images>
-        </configuration>

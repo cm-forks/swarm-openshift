@@ -11,7 +11,7 @@
 
   <groupId>io.demo</groupId>
   <artifactId>swarm-rest</artifactId>
-  <name>WildFly Swarm REST Service</name>
+  <name>WildFly Swarm Microservices :: REST Endpoint</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
