@@ -17,10 +17,8 @@ import org.wildfly.swarm.logging.LoggingFraction;
 public class RestServiceApp {
     public static void main(String[] args) throws Exception {
 
-        // Logger logger = Logger.getLogger(RestServiceApp.class);
-
         String cfg_path = System.getenv("PROJECT_PATH");
-        assert cfg_path != null : "Failled to load env var of the PROJECT_PATH";
+        cfg_path = (cfg_path == null) ? "/app/config/project.yml" : cfg_path;
 
         URL cfg = Paths.get(cfg_path).toUri().toURL();
         assert cfg != null : "Failed to load stage configuration";
