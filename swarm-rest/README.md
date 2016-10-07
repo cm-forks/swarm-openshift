@@ -16,12 +16,19 @@
 * Build Project & run
 ```
    mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes -DskipTests=true
+   or
+   mvn fabric8:run -Dfabric8.mode=kubernetes -DskipTests=true
 ```   
 * Call the Rest endpoints
 ```   
    http $(minishift service swarm-rest --url=true)/say/echo?value=hello
    http $(minishift service swarm-rest --url=true)/say/hello
 ``` 
+     
+* Useful commands
+```
+ mvn fabric8:undeploy
+```     
        
 * Deploy Keycloak SSO
 ```        
