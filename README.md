@@ -4,7 +4,7 @@ This demo contains 2 microservices, a REST client and a REST Service. They can b
 and the client will benefit of the Kubernetes Load Balancing feature to call the service from one of the pod exposing it.
 By default, only one pod is created but you can scale them to verify the load balancing feature.
 
-# Run demo on OpenShift
+# Deploy the Rest Service & Client on OpenShift
     
 * Create a local OpenShift instance on the Developer machine
 ```
