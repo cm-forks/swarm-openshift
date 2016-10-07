@@ -38,6 +38,8 @@ To access the Docker server from the local machine
 ```
  mvn fabric8:undeploy
 ```     
+  
+## Experimental
        
 * Deploy Keycloak SSO
 ```        
@@ -52,6 +54,11 @@ gofabric8 volumes
 ```
 
 Remark: The version 2.2.265 of keycloak doesn't work !!
+
+* Deploy the Fabric8 Management Templates
+```
+gofabric8 deploy --app=management
+```
 
 # Run the project locally
 
