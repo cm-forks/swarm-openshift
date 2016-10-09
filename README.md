@@ -57,9 +57,9 @@ Remark: The version 2.2.265 of keycloak doesn't work !!
 
 * Deploy the Fabric8 Management Templates
 ```
-gofabric8 deploy --app=logging --version-devops=2.2.223
-gofabric8 deploy --app=management --version-devops=2.2.223
-oc create -f http://repo1.maven.org/maven2/io/fabric8/devops/apps/fluentd/2.2.216/fluentd-2.2.216-kubernetes.yml
+# gofabric8 deploy --app=logging --version-devops=2.3.28
+gofabric8 deploy --app=management --version-devops=2.3.28
+oc create -f http://repo1.maven.org/maven2/io/fabric8/devops/apps/fluentd/2.2.251/fluentd-2.2.251-kubernetes.yml
 ```
 
 Remarks : 
