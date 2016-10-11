@@ -66,18 +66,12 @@
     <!-- WildFly Swarm Fractions -->
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
+      <artifactId>keycloak</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs-cdi</artifactId>
     </dependency>
-    <!--
-    <dependency>
-          <groupId>org.wildfly.swarm</groupId>
-          <artifactId>jaxrs-cdi</artifactId>
-        </dependency>
-            <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>cdi</artifactId>
-    </dependency>
-    -->
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>swagger-webapp</artifactId>
@@ -85,10 +79,6 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>swagger</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>keycloak</artifactId>
     </dependency>
 
     <!-- Testing -->
