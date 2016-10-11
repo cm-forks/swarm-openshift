@@ -31,7 +31,7 @@ public class ClientPolicy {
                     .realm("basic-auth")
                     .clientId("basic-auth-service")
                     .username("user")
-                    .password("password")
+                    .password("passwordd")
                     .build();
             token = keycloak.tokenManager().getAccessToken();
         } catch (NotAuthorizedException nae) {
@@ -51,7 +51,7 @@ public class ClientPolicy {
         Response response = client.target("http://localhost:8080/say/echo")
                                   .queryParam("value","hello")
                                   .request()
-                                  .header(HttpHeaders.AUTHORIZATION,authHeader)
+                                  //.header(HttpHeaders.AUTHORIZATION,authHeader)
                                   .accept(MediaType.TEXT_PLAIN_TYPE)
                                   .get();
         System.out.println("Status " + response.getStatus());
