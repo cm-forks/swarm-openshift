@@ -110,7 +110,7 @@
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <configuration>
-              <mainClass>io.swarm.demo.KeycloakServer</mainClass>
+              <mainClass>io.swarm.demo.ClientPolicy</mainClass>
             </configuration>
           </plugin>
         </plugins>
