@@ -10,7 +10,11 @@ import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.cdi.CDIFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jaxrs.JAXRSFraction;
+import org.wildfly.swarm.keycloak.KeycloakFraction;
+import org.wildfly.swarm.keycloak.Secured;
 import org.wildfly.swarm.logging.LoggingFraction;
+import org.wildfly.swarm.undertow.WARArchive;
+import org.wildfly.swarm.undertow.descriptors.WebXmlAsset;
 
 public class RestServiceApp {
     public static void main(String[] args) throws Exception {
@@ -33,15 +37,20 @@ public class RestServiceApp {
 
         swarm.fraction(new JAXRSFraction())
              .fraction(new CDIFraction())
-             .fraction(new LoggingFraction());
+             .fraction(new LoggingFraction())
+             .fraction(new KeycloakFraction());
 
         // Start the container
         swarm.start();
 
-        JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
-        appDeployment.addResource(HelloWorldEndpoint.class);
+        // Create the archive and register the resources to be packaged/scanned
+        JAXRSArchive archive = ShrinkWrap.create(JAXRSArchive.class);
+        archive.add(new WebXmlAsset());
+        archive.addAsResource("WEB-INF/keycloak.json","keycloak.json");
+        archive.as(Secured.class);
+        archive.addClass(HelloWorldEndpoint.class);
 
-        // Deploy your app
-        swarm.deploy(appDeployment);
+        // Deploy the archive
+        swarm.deploy(archive);
     }
 }
