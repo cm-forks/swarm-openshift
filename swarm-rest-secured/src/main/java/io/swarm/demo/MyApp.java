@@ -36,6 +36,6 @@ public class MyApp {
                 .fraction(new KeycloakFraction());
 
         // Start the container & deploy the fractions
-        swarm.start().deploy();
+        swarm.start();
     }
 }
