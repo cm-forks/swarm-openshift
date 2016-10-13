@@ -10,8 +10,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.demo</groupId>
-  <artifactId>swarm-security</artifactId>
-  <name>WildFly Swarm Microservices :: Security</name>
+  <artifactId>swarm-client-secured</artifactId>
+  <name>WildFly Swarm Microservices :: Rest Secured Client</name>
 
   <dependencies>
     <dependency>

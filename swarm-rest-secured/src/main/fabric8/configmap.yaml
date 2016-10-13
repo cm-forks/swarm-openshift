@@ -1,0 +1,15 @@
+metadata:
+  name: ${project.artifactId}
+data:
+  project.yml: |-
+    some:
+      string:
+        property: Hello World
+      integer:
+        property: 50
+      boolean:
+        property: true
+    endpoint:
+      hello:
+        message: Hello from WildFly Swarm running on OpenShift!
+

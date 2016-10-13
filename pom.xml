@@ -161,7 +161,8 @@
     <module>swarm-rest</module>
     <module>swarm-client</module>
     <module>swarm-test</module>
-    <module>swarm-security</module>
+    <module>swarm-client-secured</module>
+    <module>swarm-rest-secured</module>
   </modules>
 
   <repositories>

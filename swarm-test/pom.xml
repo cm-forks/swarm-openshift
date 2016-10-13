@@ -10,7 +10,7 @@
   </parent>
 
   <groupId>io.demo</groupId>
-  <artifactId>swarm-cdi</artifactId>
+  <artifactId>swarm-test</artifactId>
   <name>WildFly Swarm Microservices :: Test</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
