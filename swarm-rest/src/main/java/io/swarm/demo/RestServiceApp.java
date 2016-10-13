@@ -13,7 +13,6 @@ import org.wildfly.swarm.jaxrs.JAXRSFraction;
 import org.wildfly.swarm.keycloak.KeycloakFraction;
 import org.wildfly.swarm.keycloak.Secured;
 import org.wildfly.swarm.logging.LoggingFraction;
-import org.wildfly.swarm.undertow.WARArchive;
 import org.wildfly.swarm.undertow.descriptors.WebXmlAsset;
 
 public class RestServiceApp {
@@ -46,7 +45,7 @@ public class RestServiceApp {
         // Create the archive and register the resources to be packaged/scanned
         JAXRSArchive archive = ShrinkWrap.create(JAXRSArchive.class);
         archive.add(new WebXmlAsset());
-        archive.addAsResource("WEB-INF/keycloak.json","keycloak.json");
+        //archive.add(new FileAsset(new File("src/main/resources/WEB-INF/keycloak.json")),"keycloak.json");
         archive.as(Secured.class);
         archive.addClass(HelloWorldEndpoint.class);
 
