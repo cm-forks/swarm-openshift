@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -14,6 +16,7 @@ import javax.ws.rs.core.Response;
 
 import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 
+@ApplicationScoped
 @Path("/say")
 public class HelloWorldEndpoint {
 
@@ -24,7 +27,9 @@ public class HelloWorldEndpoint {
         users = Arrays.asList(engineers.split(","));
     }
 
-    String message = "Hello from Secured endpoint";
+    @Inject
+    @ConfigurationValue("endpoint.hello.message")
+    String message;
 
     @GET
     @Produces("text/plain")

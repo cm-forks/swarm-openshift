@@ -23,9 +23,13 @@
         <artifactId>wildfly-swarm-plugin</artifactId>
         <version>${wildfly.swarm.version}</version>
         <configuration>
-            <properties>
-              <swarm.context.path>demo</swarm.context.path>
-            </properties>
+          <mainClass>io.swarm.demo.MyApp</mainClass>
+          <environment>
+            <PROJECT_PATH>${project.build.directory}/classes/project.yml</PROJECT_PATH>
+          </environment>
+          <properties>
+            <swarm.context.path>demo</swarm.context.path>
+          </properties>
         </configuration>
         <executions>
           <execution>
@@ -46,7 +50,11 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>jaxrs</artifactId>
+      <artifactId>cdi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>jaxrs-cdi</artifactId>
     </dependency>
 
   </dependencies>
