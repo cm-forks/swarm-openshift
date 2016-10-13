@@ -13,7 +13,7 @@
   <artifactId>swarm-rest-secured</artifactId>
   <name>WildFly Swarm Microservices :: REST Secured Endpoint</name>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <build>
     <finalName>swarm-rest</finalName>
@@ -23,8 +23,9 @@
         <artifactId>wildfly-swarm-plugin</artifactId>
         <version>${wildfly.swarm.version}</version>
         <configuration>
-<!--          <mainClass>io.swarm.demo.RestServiceApp</mainClass>
-          <bundleDependencies>true</bundleDependencies>-->
+            <properties>
+              <swarm.context.path>demo</swarm.context.path>
+            </properties>
         </configuration>
         <executions>
           <execution>
@@ -34,29 +35,6 @@
           </execution>
         </executions>
       </plugin>
-<!-- NOT USED FOR THE MOMENT AS WE TEST
-     <plugin>
-        <groupId>io.fabric8</groupId>
-        <artifactId>fabric8-maven-plugin</artifactId>
-        <version>${fabric8.maven.plugin.version}</version>
-        &lt;!&ndash;<configuration>
-          <images>
-            <image>
-              <name>${project.artifactId}:${project.version}</name>
-              <alias>swarm-rest</alias>
-            </image>
-          </images>
-        </configuration>&ndash;&gt;
-        <executions>
-          <execution>
-            <id>fmp</id>
-            <goals>
-              <goal>resource</goal>
-              <goal>build</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>-->
     </plugins>
   </build>
 
@@ -68,7 +46,7 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>jaxrs-cdi</artifactId>
+      <artifactId>jaxrs</artifactId>
     </dependency>
 
   </dependencies>
