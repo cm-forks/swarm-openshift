@@ -9,6 +9,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.cdi.CDIFraction;
 import org.wildfly.swarm.jaxrs.JAXRSFraction;
+import org.wildfly.swarm.keycloak.KeycloakFraction;
 import org.wildfly.swarm.logging.LoggingFraction;
 import org.wildfly.swarm.undertow.WARArchive;
 
@@ -34,19 +35,9 @@ public class MyApp {
         swarm.fraction(new JAXRSFraction())
                 .fraction(new CDIFraction())
                 .fraction(new LoggingFraction())
-                //.fraction(new KeycloakFraction())
-                ;
+                .fraction(new KeycloakFraction());
 
-        // Start the container
-        swarm.start();
-
-/*        // Create the archive and register the resources to be packaged/scanned
-        WARArchive archive = ShrinkWrap.create(WARArchive.class);
-        //archive.as(Secured.class);
-        archive.addPackage("io.swarm.demo");
-        archive.addAllDependencies();*/
-
-        // Deploy the archive
-        swarm.deploy();
+        // Start the container & deploy the fractions
+        swarm.start().deploy();
     }
 }
