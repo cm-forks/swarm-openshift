@@ -21,7 +21,7 @@ import org.keycloak.representations.AccessTokenResponse;
 
 import static org.keycloak.admin.client.resource.BearerAuthFilter.AUTH_HEADER_PREFIX;
 
-public class ClientPolicy {
+public class ClientApp {
 
     private final static String KEYCLOAK_URL = "http://localhost:8180/auth";
     private final static String REALM = "basic-auth";
@@ -29,10 +29,8 @@ public class ClientPolicy {
     private final static String USER = "user";
     private final static String PWD = "password";
 
-
     public static void main(String[] args) {
         Client client = ClientBuilder.newClient();
-
         Response response = client.target("http://localhost:8080/demo/say/echo")
                                   .queryParam("value","hello")
                                   .request()

@@ -95,7 +95,7 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
         <configuration>
-          <mainClass>io.swarm.demo.ClientPolicy</mainClass>
+          <mainClass>io.swarm.demo.ClientApp</mainClass>
         </configuration>
       </plugin>
     </plugins>
@@ -110,7 +110,7 @@
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <configuration>
-              <mainClass>io.swarm.demo.ClientPolicy</mainClass>
+              <mainClass>io.swarm.demo.ClientApp</mainClass>
             </configuration>
           </plugin>
         </plugins>
