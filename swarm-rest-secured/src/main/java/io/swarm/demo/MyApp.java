@@ -8,13 +8,9 @@ import java.util.Set;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.cdi.CDIFraction;
-import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jaxrs.JAXRSFraction;
-import org.wildfly.swarm.keycloak.KeycloakFraction;
-import org.wildfly.swarm.keycloak.Secured;
 import org.wildfly.swarm.logging.LoggingFraction;
 import org.wildfly.swarm.undertow.WARArchive;
-import org.wildfly.swarm.undertow.descriptors.WebXmlAsset;
 
 public class MyApp {
     public static void main(String[] args) throws Exception {
@@ -38,18 +34,19 @@ public class MyApp {
         swarm.fraction(new JAXRSFraction())
                 .fraction(new CDIFraction())
                 .fraction(new LoggingFraction())
-                .fraction(new KeycloakFraction());
+                //.fraction(new KeycloakFraction())
+                ;
 
         // Start the container
         swarm.start();
 
-        // Create the archive and register the resources to be packaged/scanned
+/*        // Create the archive and register the resources to be packaged/scanned
         WARArchive archive = ShrinkWrap.create(WARArchive.class);
-        archive.as(Secured.class);
-        archive.addClass(HelloWorldEndpoint.class);
-        archive.addAllDependencies();
+        //archive.as(Secured.class);
+        archive.addPackage("io.swarm.demo");
+        archive.addAllDependencies();*/
 
         // Deploy the archive
-        swarm.deploy(archive);
+        swarm.deploy();
     }
 }
