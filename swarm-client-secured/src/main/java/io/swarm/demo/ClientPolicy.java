@@ -1,6 +1,7 @@
 package io.swarm.demo;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.client.Client;
@@ -22,16 +23,37 @@ import static org.keycloak.admin.client.resource.BearerAuthFilter.AUTH_HEADER_PR
 
 public class ClientPolicy {
 
+    private final static String KEYCLOAK_URL = "http://localhost:8180/auth";
+    private final static String REALM = "basic-auth";
+    private final static String CLIENTID = "basic-auth-service";
+    private final static String USER = "user";
+    private final static String PWD = "password";
+
+
     public static void main(String[] args) {
+        Client client = ClientBuilder.newClient();
+
+        Response response = client.target("http://localhost:8080/demo/say/echo")
+                                  .queryParam("value","hello")
+                                  .request()
+                                  .header(HttpHeaders.AUTHORIZATION,getToken())
+                                  .accept(MediaType.TEXT_PLAIN_TYPE)
+                                  .get();
+        System.out.println("Status " + response.getStatus());
+        System.out.println(response.readEntity(String.class));
+        response.close();
+    }
+
+    public static String getToken() {
         AccessTokenResponse token = null;
         Keycloak keycloak = null;
         try {
             keycloak = KeycloakBuilder.builder()
-                    .serverUrl("http://localhost:8180/auth")
-                    .realm("basic-auth")
-                    .clientId("basic-auth-service")
-                    .username("user")
-                    .password("passwordd")
+                    .serverUrl(KEYCLOAK_URL)
+                    .realm(REALM)
+                    .clientId(CLIENTID)
+                    .username(USER)
+                    .password(PWD)
                     .build();
             token = keycloak.tokenManager().getAccessToken();
         } catch (NotAuthorizedException nae) {
@@ -45,28 +67,7 @@ public class ClientPolicy {
             System.out.println("Token : " + token.getToken());
         }
 
-        String authHeader = AUTH_HEADER_PREFIX + token;
-        Client client = ClientBuilder.newClient();
-
-        Response response = client.target("http://localhost:8080/say/echo")
-                                  .queryParam("value","hello")
-                                  .request()
-                                  //.header(HttpHeaders.AUTHORIZATION,authHeader)
-                                  .accept(MediaType.TEXT_PLAIN_TYPE)
-                                  .get();
-        System.out.println("Status " + response.getStatus());
-        System.out.println(response.readEntity(String.class));
-        response.close();
-    }
-
-    public class LoggingFilter implements ClientRequestFilter {
-        //private final Logger LOG = Logger.getLogger(LoggingFilter.class.getName());
-
-        @Override
-        public void filter(ClientRequestContext requestContext) throws IOException {
-            //LOG.log(Logger.Level.INFO, requestContext.getEntity().toString());
-            System.out.println(requestContext.getEntity().toString());
-        }
+        return AUTH_HEADER_PREFIX + token;
     }
 
 }
