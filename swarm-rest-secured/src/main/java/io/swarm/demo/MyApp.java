@@ -5,13 +5,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Set;
 
-import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.cdi.CDIFraction;
 import org.wildfly.swarm.jaxrs.JAXRSFraction;
 import org.wildfly.swarm.keycloak.KeycloakFraction;
 import org.wildfly.swarm.logging.LoggingFraction;
-import org.wildfly.swarm.undertow.WARArchive;
 
 public class MyApp {
     public static void main(String[] args) throws Exception {
