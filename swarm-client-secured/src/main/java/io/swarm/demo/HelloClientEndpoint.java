@@ -12,7 +12,7 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/hello")
+@Path("/say")
 public class HelloClientEndpoint {
 
     private final static String USER = "user";
@@ -20,6 +20,7 @@ public class HelloClientEndpoint {
 
     @GET
     @Produces("text/plain")
+    @Path("hello")
     public Response callHello() {
         System.out.println(">>> Calling the REST Service");
         Client client = ClientBuilder.newClient();

@@ -39,7 +39,6 @@
           <!-- <debug>8000</debug> -->
           <properties>
             <swarm.port.offset>200</swarm.port.offset>
-          <!-- <swarm.context.path>demo-client</swarm.context.path> -->
           </properties>
         </configuration>
         <executions>
