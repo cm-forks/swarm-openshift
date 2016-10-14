@@ -29,6 +29,8 @@ public class TimerClient extends RouteBuilder {
 
         from(inputEndpoint)
           .to(httpEndpoint)
+          .setBody()
+            .simple("${body} - ${header.CamelTimerFiredTime}")
           .to(resultEndpoint);
     }
 
