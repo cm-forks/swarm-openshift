@@ -53,7 +53,15 @@
         <scope>import</scope>
       </dependency>
 
+      <!-- Java EE 7 dependency -->
       <dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>7.0</version>
+        <scope>provided</scope>
+      </dependency>
+
+<!--      <dependency>
         <groupId>org.keycloak</groupId>
         <artifactId>keycloak-core</artifactId>
         <version>${keycloak.version}</version>
@@ -87,7 +95,7 @@
         <groupId>org.jboss.resteasy</groupId>
         <artifactId>resteasy-jackson2-provider</artifactId>
         <version>${resteasy.version}</version>
-      </dependency>
+      </dependency>-->
 
       <dependency>
         <groupId>org.jboss.logging</groupId>

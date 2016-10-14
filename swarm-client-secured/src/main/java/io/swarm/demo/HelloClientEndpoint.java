@@ -20,6 +20,7 @@ public class HelloClientEndpoint {
     @GET
     @Path("hello")
     public Response callHello() {
+        System.out.println(">>> Calling the REST Service");
         Client client = ClientBuilder.newClient();
         Response response = client.target("http://localhost:8080/demo/say/echo")
                 .queryParam("value","hello")
@@ -36,31 +37,4 @@ public class HelloClientEndpoint {
         String val = user + ":" + pwd;
         return Base64.getEncoder().encodeToString(val.getBytes());
     }
-
-/*    public static String getToken() {
-        AccessTokenResponse token = null;
-        Keycloak keycloak = null;
-        try {
-            keycloak = KeycloakBuilder.builder()
-                    .serverUrl(KEYCLOAK_URL)
-                    .realm(REALM)
-                    .clientId(CLIENTID)
-                    .username(USER)
-                    .password(PWD)
-                    .build();
-            token = keycloak.tokenManager().getAccessToken();
-        } catch (NotAuthorizedException nae) {
-            System.out.println("You are not authorized to invoke the service");
-        }
-
-        if (token != null) {
-            System.out.println("Id : " + token.getIdToken());
-            System.out.println("Session State : " + token.getSessionState());
-            System.out.println("Expires in : " + token.getExpiresIn());
-            System.out.println("Token : " + token.getToken());
-        }
-
-        return AUTH_HEADER_PREFIX + token;
-    }*/
-
 }
