@@ -15,7 +15,6 @@
   <packaging>war</packaging>
 
   <dependencies>
-
     <!-- Java EE 7 dependency -->
     <dependency>
       <groupId>javax</groupId>

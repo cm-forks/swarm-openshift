@@ -21,9 +21,9 @@ By default, only one pod is created but you can scale them to verify the load ba
     ./scripts/hit-service-echo.sh
     ./scripts/hit-service-hello.sh
     
-## Call the service using the Client
+## Call the service using the Camel
     
-    cd swarm-client && mvn camel:run
+    cd camel-client && mvn camel:run
     
 # Deploy the Rest Service & Client on OpenShift
     

@@ -126,6 +126,7 @@
   <modules>
     <module>swarm-rest</module>
     <module>camel-client</module>
+    <module>swarm-client</module>
     <module>swarm-test</module>
     <module>security</module>
   </modules>

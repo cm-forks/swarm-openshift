@@ -10,8 +10,8 @@
   </parent>
 
   <groupId>io.demo</groupId>
-  <artifactId>swarm-client</artifactId>
-  <name>WildFly Swarm Microservices :: Rest Client</name>
+  <artifactId>camel-client</artifactId>
+  <name>WildFly Swarm Microservices :: Camel Rest Client</name>
 
   <dependencies>
     <!-- camel -->
