@@ -30,6 +30,11 @@
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>cdi</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>io.fabric8</groupId>
+      <artifactId>fabric8-cdi</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -38,6 +43,13 @@
         <groupId>io.fabric8</groupId>
         <artifactId>fabric8-maven-plugin</artifactId>
         <version>${fabric8.maven.plugin.version}</version>
+        <configuration>
+          <generator>
+            <includes>
+              <include>wildfly-swarm</include>
+            </includes>
+          </generator>
+        </configuration>
         <executions>
           <execution>
             <goals>
@@ -55,7 +67,7 @@
         <configuration>
           <!-- <debug>8000</debug> -->
           <properties>
-            <swarm.port.offset>200</swarm.port.offset>
+            <!--<swarm.port.offset>200</swarm.port.offset>-->
           </properties>
         </configuration>
         <executions>
