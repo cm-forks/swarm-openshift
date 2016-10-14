@@ -29,6 +29,12 @@ By default, only one pod is created but you can scale them to verify the load ba
 ## Use the Camel client
         
     cd camel-client && mvn clean camel:run
+    
+## Check the Swagger Doc
+
+  open http://localhost:8080/swagger/
+    
+  open http://localhost:8080/swagger-ui/?url=http://localhost:8080/swagger
       
 # Deploy on OpenShift
     

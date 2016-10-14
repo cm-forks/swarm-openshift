@@ -34,7 +34,8 @@ public class RestServiceApp {
 
         swarm.fraction(new JAXRSFraction())
              .fraction(new CDIFraction())
-             .fraction(new LoggingFraction());
+             .fraction(new LoggingFraction())
+             .fraction(new SwaggerFraction());
 
         // Start the container
         swarm.start();
