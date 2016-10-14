@@ -25,6 +25,12 @@ By default, only one pod is created but you can scale them to verify the load ba
     
     cd camel-client && mvn camel:run
     
+## Call the service using Swarm REST Client
+     
+    cd swarm-client && mvn wildfly-swarm:run 
+    http http://localhost:8280/say/hello  
+      
+    
 # Deploy the Rest Service & Client on OpenShift
     
 * Create a local OpenShift instance on the Developer machine

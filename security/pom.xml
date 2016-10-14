@@ -11,6 +11,7 @@
 
   <groupId>io.demo</groupId>
   <artifactId>security</artifactId>
+  <name>WildFly Swarm Microservices :: Security Parent</name>
   <packaging>pom</packaging>
 
   <modules>
