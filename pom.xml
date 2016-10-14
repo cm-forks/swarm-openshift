@@ -125,10 +125,8 @@
 
   <modules>
     <module>swarm-rest</module>
-    <module>swarm-client</module>
+    <module>camel-client</module>
     <module>swarm-test</module>
-    <module>swarm-client-secured</module>
-    <module>swarm-rest-secured</module>
     <module>security</module>
   </modules>
 
