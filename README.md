@@ -68,14 +68,19 @@ To access the Docker server from the local machine
 
 * Deploy the Camel client
 
-   cd camel-client && mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes -DskipTests=true
+   cd camel-client && mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
 
-# Increase the number of pods & check load balancing
+* Increase the number of pods & check load balancing
+
+    oc scale rc/swarm-rest-1 --replicas=2
+    oc get pods
+    oc logs new_pod created
+
+
+* Deploy the Swarm REST client
+
+    TODO
 
 
      
-     
-* Useful commands
-```
- mvn fabric8:undeploy
-```     
+         
