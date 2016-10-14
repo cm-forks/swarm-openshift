@@ -5,20 +5,21 @@ import java.util.Base64;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@ApplicationPath("/call")
+@Path("/hello")
 public class HelloClientEndpoint {
 
     private final static String USER = "user";
     private final static String PWD = "password";
 
     @GET
-    @Path("hello")
+    @Produces("text/plain")
     public Response callHello() {
         System.out.println(">>> Calling the REST Service");
         Client client = ClientBuilder.newClient();
