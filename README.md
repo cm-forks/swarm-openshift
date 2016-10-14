@@ -21,17 +21,16 @@ By default, only one pod is created but you can scale them to verify the load ba
     ./scripts/hit-service-echo.sh
     ./scripts/hit-service-hello.sh
     
-## Call the service using the Camel
-    
-    cd camel-client && mvn camel:run
-    
 ## Call the service using Swarm REST Client
      
     cd swarm-client && mvn wildfly-swarm:run 
     http http://localhost:8280/say/hello  
+
+## Use the Camel client
+        
+    cd camel-client && mvn clean camel:run
       
-    
-# Deploy the Rest Service & Client on OpenShift
+# Deploy on OpenShift
     
 * Create a local OpenShift instance on the Developer machine
 ```
@@ -60,6 +59,15 @@ To access the Docker server from the local machine
    http $(minishift service swarm-rest --url=true)/say/echo?value=hello
    http $(minishift service swarm-rest --url=true)/say/hello
 ``` 
+
+* Deploy the Camel client
+
+   cd camel-client && mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes -DskipTests=true
+
+# Increase the number of pods & check load balancing
+
+
+     
      
 * Useful commands
 ```
