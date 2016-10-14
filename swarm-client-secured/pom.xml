@@ -12,6 +12,7 @@
   <groupId>io.demo</groupId>
   <artifactId>swarm-client-secured</artifactId>
   <name>WildFly Swarm Microservices :: Rest Secured Client</name>
+  <packaging>war</packaging>
 
   <dependencies>
     <dependency>
@@ -35,6 +36,10 @@
       <artifactId>resteasy-jackson2-provider</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>jaxrs</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -43,27 +48,23 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
         <configuration>
-          <mainClass>io.swarm.demo.ClientApp</mainClass>
+          <mainClass>io.swarm.demo.HelloClientEndpoint</mainClass>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>wildfly-swarm-plugin</artifactId>
+        <version>${wildfly.swarm.version}</version>
+        <configuration>
+          <!--
+          <mainClass>io.swarm.demo.HelloClient</mainClass>
+          -->
+          <properties>
+            <swarm.port.offset>200</swarm.port.offset>
+            <swarm.context.path>demo-client</swarm.context.path>
+          </properties>
         </configuration>
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>keycloak-server</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <configuration>
-              <mainClass>io.swarm.demo.ClientApp</mainClass>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-
 </project>

@@ -34,7 +34,7 @@ public class HelloWorldEndpoint {
     @GET
     @Produces("text/plain")
     @Path("hello")
-    public Response doGet() throws Exception {
+    public Response hello() throws Exception {
         String HOSTNAME = (System.getenv("HOSTNAME") == null) ? getHostname() : System.getenv("HOSTNAME");
         return Response.ok(message + " from : " + HOSTNAME).build();
     }
