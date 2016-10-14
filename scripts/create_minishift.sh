@@ -8,4 +8,4 @@ cp -rf ~/.kube/ ~/.kube.bk/
 rm -rf ~/.kube/
 
 echo "## Create & start minishift"
-minishift start --deploy-registry=true --deploy-router=true --memory=8000 --vm-driver="xhyve"
+minishift start --deploy-registry=true --deploy-router=true --memory=8000 --cpus=4 --vm-driver="xhyve"

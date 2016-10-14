@@ -60,10 +60,10 @@
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs-cdi</artifactId>
     </dependency>
-<!--    <dependency>
+    <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>swagger-webapp</artifactId>
-    </dependency>-->
+    </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>swagger</artifactId>

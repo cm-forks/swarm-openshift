@@ -56,7 +56,7 @@ To access the Docker server from the local machine
 ```        
 * Build Project & run
 ```
-   mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes -DskipTests=true
+   cd swarm-rest && mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes -DskipTests=true
    or
    mvn fabric8:run -Dfabric8.mode=kubernetes -DskipTests=true
 ```   
