@@ -25,11 +25,11 @@ public class TimerClient extends RouteBuilder {
 
         // let the client attempt to redeliver if the service is not available
         onException(Exception.class)
-                .maximumRedeliveries(5).redeliveryDelay(1000);
+          .maximumRedeliveries(5).redeliveryDelay(1000);
 
         from(inputEndpoint)
-            .to(httpEndpoint)
-            .to(resultEndpoint);
+          .to(httpEndpoint)
+          .to(resultEndpoint);
     }
 
 }
