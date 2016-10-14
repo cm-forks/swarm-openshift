@@ -15,7 +15,7 @@
   <packaging>war</packaging>
 
   <dependencies>
-    <dependency>
+<!--    <dependency>
       <groupId>javax.ws.rs</groupId>
       <artifactId>javax.ws.rs-api</artifactId>
     </dependency>
@@ -34,7 +34,7 @@
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-jackson2-provider</artifactId>
-    </dependency>
+    </dependency>-->
 
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
