@@ -1,10 +1,10 @@
 package io.swarm.demo;
 
-import io.fabric8.annotations.ServiceName;
-import io.fabric8.annotations.External;
-import io.fabric8.annotations.Protocol;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+//import io.fabric8.annotations.ServiceName;
+//import io.fabric8.annotations.External;
+//import io.fabric8.annotations.Protocol;
+//import javax.enterprise.context.ApplicationScoped;
+//import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,9 +22,7 @@ public class HelloClientEndpoint {
     private final static String USER = "user";
     private final static String PWD = "password";
 
-    @Inject
-    @Protocol("http") @ServiceName("swarm-rest")
-    private String helloService;
+    private String helloService = "http://swarm-rest";
 
     @GET
     @Produces("text/plain")

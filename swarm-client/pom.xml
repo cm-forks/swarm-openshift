@@ -31,10 +31,12 @@
       <artifactId>cdi</artifactId>
     </dependency>
 
+    <!--
     <dependency>
       <groupId>io.fabric8</groupId>
       <artifactId>fabric8-cdi</artifactId>
     </dependency>
+    -->
   </dependencies>
 
   <build>
