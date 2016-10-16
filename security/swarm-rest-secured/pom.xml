@@ -27,9 +27,6 @@
           <environment>
             <PROJECT_PATH>${project.build.directory}/classes/project.yml</PROJECT_PATH>
           </environment>
-          <properties>
-            <swarm.port.offset>100</swarm.port.offset>
-          </properties>
         </configuration>
         <executions>
           <execution>
