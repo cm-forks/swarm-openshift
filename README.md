@@ -62,7 +62,6 @@ To access the Docker server from the local machine
 ```   
 * Call the Rest endpoint exposed by the Service
 ```   
-   http $(minishift service swarm-rest --url=true)/say/echo?value=hello
    http $(minishift service swarm-rest --url=true)/say/hello
 ``` 
 
