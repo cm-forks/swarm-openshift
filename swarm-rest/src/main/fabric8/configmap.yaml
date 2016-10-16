@@ -11,5 +11,5 @@ data:
         property: true
     endpoint:
       hello:
-        message: Hello from WildFly Swarm running on OpenShift!
+        message: Hello from WildFly Swarm running on
 
