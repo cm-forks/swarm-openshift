@@ -78,8 +78,9 @@ To access the Docker server from the local machine
 
 
 * Deploy the Swarm REST client
-
-    TODO
+```
+cd swarm-client && mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
+```
 
 
      
