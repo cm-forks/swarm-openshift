@@ -60,26 +60,38 @@ To access the Docker server from the local machine
    or
    mvn fabric8:run -Dfabric8.mode=kubernetes -DskipTests=true
 ```   
-* Call the Rest endpoints
+* Call the Rest endpoint exposed by the Service
 ```   
    http $(minishift service swarm-rest --url=true)/say/echo?value=hello
    http $(minishift service swarm-rest --url=true)/say/hello
 ``` 
 
-* Deploy the Camel client
-
-   cd camel-client && mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
-
-* Increase the number of pods & check load balancing
-
-    oc scale rc/swarm-rest-1 --replicas=2
-    oc get pods
-    oc logs new_pod created
-
-
 * Deploy the Swarm REST client
 ```
 cd swarm-client && mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
+```
+
+* Call the Rest endpoint exposed by the Client
+```   
+   http $(minishift service swarm-client --url=true)/say/hello
+``` 
+
+* Increase the number of pods & check load balancing
+```
+oc scale rc/swarm-rest-1 --replicas=2
+```
+
+* Check the load balancing
+```
+oc get pods
+oc logs new_pod created
+```
+
+## Bonus
+
+* Deploy the Camel client
+```
+   cd camel-client && mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
 ```
 
 
