@@ -1,0 +1,11 @@
+project:
+   stage: default
+service:
+   hello:
+       url: "http://localhost:8080"
+---
+project:
+   stage: OPENSHIFT
+service:
+   hello:
+       url: "http://swarm-rest"
