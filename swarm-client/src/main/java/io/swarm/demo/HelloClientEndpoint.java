@@ -1,19 +1,16 @@
 package io.swarm.demo;
 
-//import io.fabric8.annotations.ServiceName;
-//import io.fabric8.annotations.External;
-//import io.fabric8.annotations.Protocol;
-//import javax.enterprise.context.ApplicationScoped;
-//import javax.inject.Inject;
-import javax.ws.rs.ApplicationPath;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 
 @Path("/say")
 @ApplicationScoped
@@ -22,7 +19,9 @@ public class HelloClientEndpoint {
     private final static String USER = "user";
     private final static String PWD = "password";
 
-    private String helloService = "http://swarm-rest";
+    @Inject
+    @ConfigurationValue("service.hello.url")
+    private String helloService;
 
     @GET
     @Produces("text/plain")
