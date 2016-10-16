@@ -23,12 +23,12 @@
         <artifactId>wildfly-swarm-plugin</artifactId>
         <version>${wildfly.swarm.version}</version>
         <configuration>
-          <mainClass>io.swarm.demo.MyApp</mainClass>
+          <mainClass>io.swarm.demo.RestServiceApp</mainClass>
           <environment>
             <PROJECT_PATH>${project.build.directory}/classes/project.yml</PROJECT_PATH>
           </environment>
           <properties>
-            <swarm.context.path>demo</swarm.context.path>
+            <swarm.port.offset>100</swarm.port.offset>
           </properties>
         </configuration>
         <executions>

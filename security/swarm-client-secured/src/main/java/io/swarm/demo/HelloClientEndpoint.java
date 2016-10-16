@@ -2,6 +2,8 @@ package io.swarm.demo;
 
 import java.util.Base64;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -12,20 +14,27 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
+
 @Path("/say")
+@ApplicationScoped
 public class HelloClientEndpoint {
 
     private final static String USER = "user";
     private final static String PWD = "password";
 
+    @Inject
+    @ConfigurationValue("service.hello.url")
+    private String helloService;
+
     @GET
     @Produces("text/plain")
     @Path("hello")
     public Response callHello() {
-        System.out.println(">>> Calling the REST Service");
+        System.out.println(">>> Calling the Hello REST Service");
+        System.out.println(">>> URL Hello Service : " + helloService);
         Client client = ClientBuilder.newClient();
-        Response response = client.target("http://localhost:8080/demo/say/echo")
-                .queryParam("value","hello")
+        Response response = client.target(helloService + "/say/hello")
                 .request()
                 .header(HttpHeaders.AUTHORIZATION,"Basic " + getUserPwdEncoded(USER,PWD))
                 .accept(MediaType.TEXT_PLAIN_TYPE)

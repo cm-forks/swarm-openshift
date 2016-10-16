@@ -5,13 +5,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Set;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.cdi.CDIFraction;
+import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jaxrs.JAXRSFraction;
 import org.wildfly.swarm.keycloak.KeycloakFraction;
 import org.wildfly.swarm.logging.LoggingFraction;
 
-public class MyApp {
+public class RestServiceApp {
     public static void main(String[] args) throws Exception {
 
         String cfg_path = System.getenv("PROJECT_PATH");
@@ -35,7 +37,10 @@ public class MyApp {
                 .fraction(new LoggingFraction())
                 .fraction(new KeycloakFraction());
 
+        JAXRSArchive archive = ShrinkWrap.create(JAXRSArchive.class);
+        archive.addResource(HelloWorldEndpoint.class);
+
         // Start the container & deploy the fractions
-        swarm.start().deploy();
+        swarm.start().deploy(archive);
     }
 }

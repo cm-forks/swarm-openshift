@@ -1,0 +1,22 @@
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - resources:
+            requests:
+              cpu: "0.5"
+              memory: 250Mi
+            limits:
+              cpu: "1"
+              memory: 500Mi
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+      volumes:
+      - configMap:
+          name: ${project.artifactId}
+          items:
+          - key: "project.yml"
+            path: "project.yml"
+        name: config

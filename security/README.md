@@ -27,6 +27,8 @@ cd keycloak-2.2.1.Final/bin
     cd security/swarm-rest-secured
     mvn clean wildfly-swarm:run
 ```
+
+Remark : To test from openshift, change the IP address ->   "auth-server-url": "http://dabou.10.44.178.207.xip.io:8080/auth", //"http://localhost:8180/auth",
     
 ## Call the HTTP Endpoint
     
@@ -47,12 +49,13 @@ cd keycloak-2.2.1.Final/bin
     
     Hello Sébastien
     
-    http -a user:password http://localhost:8080/say/hello
+    http -a user:password http://localhost:8080/demo/say/hello
     
 ## Use the client
     
     cd security/swarm-client-secured
     mvn clean wildfly-swarm:run
+    http http://localhost:8380/say/hello
     
 ## Experimental
        
