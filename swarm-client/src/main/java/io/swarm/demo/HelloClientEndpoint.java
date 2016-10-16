@@ -27,9 +27,8 @@ public class HelloClientEndpoint {
     @Produces("text/plain")
     @Path("hello")
     public Response callHello() {
-        System.out.println(">>> Calling the REST Service");
+        System.out.println(">>> Calling the Hello REST Service");
         System.out.println(">>> Hello Service : " + helloService);
-        // String helloService = "http://localhost:8080" + "/say/echo";
         Client client = ClientBuilder.newClient();
         Response response = client.target(helloService + "/say/hello")
                 .queryParam("value","hello")
