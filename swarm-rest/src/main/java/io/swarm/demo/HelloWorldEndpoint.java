@@ -47,7 +47,7 @@ public class HelloWorldEndpoint {
     )
     public Response doGet() throws Exception {
         String HOSTNAME = (System.getenv("HOSTNAME") == null) ? getHostname() : System.getenv("HOSTNAME");
-        return Response.ok(message + " from : " + HOSTNAME).build();
+        return Response.ok(message + " : " + HOSTNAME + " !").build();
     }
 
     @GET
