@@ -1,7 +1,7 @@
 {
   "realm": "basic-auth",
   "resource": "basic-auth-service",
-  "auth-server-url": "http://127.0.0.1:8080/auth",
+  "auth-server-url": "http://127.0.0.1:8180/auth",
   "ssl-required": "external",
   "enable-basic-auth": "true",
   "credentials": {
