@@ -64,7 +64,7 @@
         <configuration>
           <!-- <debug>8000</debug> -->
           <properties>
-            <!--<swarm.port.offset>200</swarm.port.offset>-->
+            <swarm.port.offset>200</swarm.port.offset>
           </properties>
         </configuration>
         <executions>
