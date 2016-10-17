@@ -26,10 +26,6 @@ By default, only one pod is created but you can scale them to verify the load ba
     cd swarm-client && mvn wildfly-swarm:run 
     http http://localhost:8280/say/hello  
 
-## Use the Camel client
-        
-    cd camel-client && mvn clean camel:run
-    
 ## Check the Swagger Doc
 
   open http://localhost:8080/swagger/
@@ -85,14 +81,5 @@ oc scale rc/swarm-rest-1 --replicas=2
 oc get pods
 oc logs new_pod created
 ```
-
-## Bonus
-
-* Deploy the Camel client
-```
-   cd camel-client && mvn clean package fabric8:deploy fabric8:log -Dfabric8.mode=kubernetes
-```
-
-
      
          
