@@ -8,4 +8,4 @@ project:
    stage: OPENSHIFT
 service:
    hello:
-       url: "http://swarm-rest"
+       url: "http://swarm-rest-secured"
